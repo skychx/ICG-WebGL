@@ -9,10 +9,12 @@ let gl;
 const points = [];
 const numTimesToSubdivide = 5;
 
+// 这是一个递归函数
 function divideTriangle(a, b, c, count = numTimesToSubdivide) {
   if(count <= 0) {
     points.push(a, b, c);
   } else {
+    // 计算各边中点
     const ab = vec2.lerp(a, b, 0.5);
     const ac = vec2.lerp(a, c, 0.5);
     const bc = vec2.lerp(b, c, 0.5);
@@ -39,6 +41,7 @@ function init() {
 
   // First, initialize the corners of our gasket with three points.
 
+  // 初始数据（大三角形数据）
   const vertices = [
     vec2(-1, -1),
     vec2(0, 1),
@@ -74,7 +77,7 @@ function init() {
 
 function render() {
   gl.clear(gl.COLOR_BUFFER_BIT);
-  gl.drawArrays(gl.TRIANGLES, 0, points.length);
+  gl.drawArrays(gl.TRIANGLES, 0, points.length); // 注意这里用的是 gl.TRIANGLES，绘制三角形
 }
 
 init();

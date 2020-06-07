@@ -86,10 +86,12 @@ function init() {
 
   // enable hidden-surface removal
 
+  // 开启深度检测
   gl.enable(gl.DEPTH_TEST);
 
   // Load the data into the GPU
 
+  // 颜色信息
   const cBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, pointsToBuffer(colors), gl.STATIC_DRAW);
@@ -98,6 +100,7 @@ function init() {
   gl.vertexAttribPointer(vColor, 3, gl.FLOAT, false, 0, 0);
   gl.enableVertexAttribArray(vColor);
 
+  // 顶点信息
   const vBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, pointsToBuffer(points), gl.STATIC_DRAW);
@@ -111,6 +114,7 @@ function init() {
 }
 
 function render() {
+  // 需要把 COLOR_BUFFER 和 DEPTH_BUFFER 都清除掉
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   gl.drawArrays(gl.TRIANGLES, 0, points.length);
 }
