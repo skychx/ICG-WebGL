@@ -54,7 +54,7 @@ module.exports = function (env = {}) {
     plugins.push(
       new OpenBrowserPlugin({url: 'http://localhost:3000'}),
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.SourceMapDevToolPlugin({}),
+      // new webpack.SourceMapDevToolPlugin({}),
     );
   }
 
@@ -100,7 +100,7 @@ module.exports = function (env = {}) {
 
     devServer: {
       contentBase: path.join(__dirname, env.server || '.'),
-      compress: true,
+      compress: false,
       port: 3000,
       hot: true,
       // ...
